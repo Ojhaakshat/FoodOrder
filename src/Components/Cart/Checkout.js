@@ -1,14 +1,16 @@
 import classes from './Checkout.module.css';
 import useInput from '../../hooks/use-input';
+import { useContext } from 'react';
+import CartContext from '../../store/cart-context';
 
 const Checkout = (props) => {
-    
+    const cartCtx = useContext(CartContext);    
     const { value: enteredName, hasError: nameInputHasError, isValid: nameIsValid, valueHandler: nameChangeHandler, touchHandler: nameTouchHandler, reset: nameReset} = useInput(value => value.trim() !== '');
     const { value: enteredStreet, hasError: streetInputHasError, isValid: streetIsValid, valueHandler: streetChangeHandler, touchHandler: streetTouchHandler, reset: streetReset} = useInput(value => value.trim() !== '');
     const { value: enteredPostalCode, hasError: postalCodeInputHasError, isValid: postalCodeIsValid, valueHandler: postalCodeChangeHandler, touchHandler: postalCodeTouchHandler, reset: postalCodeReset} = useInput(value => value.trim().length === 6 && !isNaN(value.trim()));
     const { value: enteredCity, hasError: cityInputHasError, isValid: cityIsValid, valueHandler: cityChangeHandler, touchHandler: cityTouchHandler, reset: cityReset} = useInput(value => value.trim() !== '');
     let formIsValid = false;
-    if(nameIsValid && streetIsValid && cityIsValid && postalCodeIsValid) {
+    if(nameIsValid && streetIsValid && cityIsValid && postalCodeIsValid && cartCtx.items.length > 0) {
         formIsValid = true;
     }
     const confirmHandler = (event) => {
