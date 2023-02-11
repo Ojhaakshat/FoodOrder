@@ -28,11 +28,12 @@ const AvailableMeals = props =>  {
           })
         }
         setMeals(MEALSDATAARRAY);
+        setIsLoading(false);       
       }
       fetchMeals().catch(error => {
         setError(error.message);
+        setIsLoading(false);        
       }) 
-      setIsLoading(false);        
 
     },[])
 

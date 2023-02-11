@@ -22,6 +22,20 @@
     max-width: 100%;
   }
   
+  .invalid input {
+    border: 1px solid #b40e0e;
+    background-color: #fddddd;
+  }
+  
+  .invalid input:focus {
+    border-color: #ff8800;
+    background-color: #fbe8d2;
+  }
+  
+  .errorText {
+    color: #b40e0e;
+  }
+  
   .actions {
     display: flex;
     justify-content: flex-end;
@@ -54,11 +68,11 @@
     background-color: #7a2706;
   }
   
-  .invalid label {
+  /* .invalid label {
     color: #ca3e51;
   }
   
   .invalid input {
     border-color: #aa0b20;
     background-color: #ffeff1;
-  }
+  } */
